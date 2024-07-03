@@ -13,7 +13,7 @@ function PostListScreen({ setCurrentPost, navToPostDetail }) {
   };
 
   useEffect(() => {
-    fetch(apiurl + "posts", {
+    fetch(apiurl + "posts/all", {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -42,12 +42,8 @@ function PostListScreen({ setCurrentPost, navToPostDetail }) {
         <ul className="postList">
           {postList.map((post) => {
             return (
-              <li
-                key={post.id}
-                className="postPreview"
-                onClick={() => loadPostDetail(post)}
-              >
-                <h2>{post.title} </h2>
+              <li key={post.id} className="postPreview">
+                <h2 onClick={() => loadPostDetail(post)}>{post.title} </h2>
 
                 <h3>{post.subtitle}</h3>
                 <p>By {post.user.full_name}</p>
@@ -55,6 +51,8 @@ function PostListScreen({ setCurrentPost, navToPostDetail }) {
                   Originally written: {new Date(post.createdAt).toUTCString()}
                 </p>
                 <p>Last updated: {new Date(post.updatedAt).toUTCString()}</p>
+                {post.is_published ? <p>Published</p> : <p>Unpublished</p>}
+                <button>Manage post</button>
               </li>
             );
           })}

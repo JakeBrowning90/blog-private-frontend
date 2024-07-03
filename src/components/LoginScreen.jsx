@@ -8,6 +8,7 @@ function LoginScreen({
   handlePassword,
   setCurrentUser,
   navToPostList,
+  setLoggedIn,
 }) {
   const [invalidLogin, setInvalidLogin] = useState(false);
   // TODO - Add fetch for login
@@ -28,12 +29,17 @@ function LoginScreen({
       setInvalidLogin(true);
     } else {
       const loginResponse = await response.json();
-      localStorage.setItem("username", loginResponse.username);
-      localStorage.setItem("id", loginResponse.id);
-      localStorage.setItem("token", `Bearer ${loginResponse.token}`);
-      setCurrentUser(loginResponse.username);
-      setInvalidLogin(false);
-      navToPostList();
+      if (loginResponse.isAuthor !== true) {
+        setInvalidLogin(true);
+      } else {
+        localStorage.setItem("username", loginResponse.username);
+        localStorage.setItem("id", loginResponse.id);
+        localStorage.setItem("token", `Bearer ${loginResponse.token}`);
+        setCurrentUser(loginResponse.username);
+        setInvalidLogin(false);
+        setLoggedIn(true);
+        navToPostList();
+      }
     }
   }
   return (

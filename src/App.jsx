@@ -18,6 +18,8 @@ function App() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [loggedIn, setLoggedIn] = useState(false);
+
   function handleUsername(e) {
     setUsername(e.target.value);
   }
@@ -63,9 +65,44 @@ function App() {
   };
 
   const logOut = () => {
+    setLoggedIn(false);
     setCurrentUser("");
+    setEmail("");
+    setPassword("");
     localStorage.clear();
   };
+
+  if (!loggedIn) {
+    return (
+      <>
+        <header>
+          <div onClick={navToPostList}>Home</div>
+          {currentUser ? (
+            <nav>
+              <div>{currentUser}</div>
+              <div onClick={logOut}>Logout</div>
+            </nav>
+          ) : (
+            <nav>
+              {/* <div>Visitor</div>
+              <div onClick={navToLogin}>Log in</div>
+              <div onClick={navToSignup}>Sign up</div> */}
+              Writer Access
+            </nav>
+          )}
+        </header>
+        <LoginScreen
+          email={email}
+          password={password}
+          handleEmail={handleEmail}
+          handlePassword={handlePassword}
+          setCurrentUser={setCurrentUser}
+          navToPostList={navToPostList}
+          setLoggedIn={setLoggedIn}
+        />
+      </>
+    );
+  }
 
   return (
     <>
@@ -84,7 +121,7 @@ function App() {
           </nav>
         )}
       </header>
-      {viewLogin && (
+      {/* {viewLogin && (
         <LoginScreen
           email={email}
           password={password}
@@ -93,7 +130,7 @@ function App() {
           setCurrentUser={setCurrentUser}
           navToPostList={navToPostList}
         />
-      )}
+      )} */}
       {viewSignup && (
         <SignupScreen
           username={username}
