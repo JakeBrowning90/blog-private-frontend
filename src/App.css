@@ -1,8 +1,12 @@
 #root {
   max-width: 1280px;
+  height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: grid;
+  grid-template-rows: 30px 1fr;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -39,4 +43,59 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* My styles */
+
+body {
+  height: 100vh;
+}
+
+header,
+nav {
+  display: flex;
+  gap: 10px;
+}
+
+header {
+  background-color: rgba(168, 168, 168, 0.492);
+  justify-content: space-between;
+}
+
+.page {
+  height: 100%;
+}
+
+.screenLogin {
+  background-color: rgba(255, 106, 106, 0.522);
+}
+
+.screenSignup {
+  background-color: rgba(255, 194, 61, 0.522);
+}
+
+.screenPostList {
+  background-color: rgba(255, 243, 106, 0.522);
+}
+
+.screenPostDetail {
+  background-color: rgba(116, 255, 106, 0.522);
+}
+
+.postList {
+  list-style: none;
+  padding: 0;
+}
+
+.postPreview {
+  background-color: rgba(116, 255, 106, 0.522);
+}
+
+.userForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.commentLI {
+  background-color: rgba(172, 255, 47, 0.49);
 }
