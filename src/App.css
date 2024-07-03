@@ -82,6 +82,11 @@ header {
   background-color: rgba(116, 255, 106, 0.522);
 }
 
+.screenPostForm {
+  background-color: rgba(106, 255, 245, 0.522);
+}
+
+
 .postList {
   list-style: none;
   padding: 0;
@@ -91,7 +96,7 @@ header {
   background-color: rgba(116, 255, 106, 0.522);
 }
 
-.userForm {
+.userForm, .postForm {
   display: flex;
   flex-direction: column;
 }

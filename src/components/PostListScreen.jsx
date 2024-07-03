@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { apiurl } from "../apiSource";
 
-function PostListScreen({ setCurrentPost, navToPostDetail }) {
+function PostListScreen({ setCurrentPost, navToPostDetail, navToPostForm }) {
   const [postList, setPostList] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,6 +36,7 @@ function PostListScreen({ setCurrentPost, navToPostDetail }) {
   return (
     <div className="screenPostList page">
       Post List
+      <button onClick={navToPostForm}>Write New Post</button>
       {postList.length == 0 ? (
         <p>There are no published posts.</p>
       ) : (

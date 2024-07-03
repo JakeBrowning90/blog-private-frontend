@@ -3,14 +3,16 @@ import LoginScreen from "./components/LoginScreen";
 import SignupScreen from "./components/SignupScreen";
 import PostListScreen from "./components/PostListScreen";
 import PostDetailScreen from "./components/PostDetailScreen";
+import PostFormScreen from "./components/PostFormScreen";
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [viewLogin, setViewLogin] = useState(false);
+  const [viewLogin, setViewLogin] = useState(true);
   const [viewSignup, setViewSignup] = useState(false);
-  const [viewPostList, setViewPostList] = useState(true);
+  const [viewPostList, setViewPostList] = useState(false);
   const [viewPostDetail, setViewPostDetail] = useState(false);
+  const [viewPostForm, setViewPostForm] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [currentPost, setCurrentPost] = useState("");
   const [username, setUsername] = useState("");
@@ -20,9 +22,9 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
 
-  function handleUsername(e) {
-    setUsername(e.target.value);
-  }
+  // function handleUsername(e) {
+  //   setUsername(e.target.value);
+  // }
 
   function handleEmail(e) {
     setEmail(e.target.value);
@@ -32,15 +34,16 @@ function App() {
     setPassword(e.target.value);
   }
 
-  function handleConfirmPassword(e) {
-    setConfirmPassword(e.target.value);
-  }
+  // function handleConfirmPassword(e) {
+  //   setConfirmPassword(e.target.value);
+  // }
 
   const navToLogin = () => {
     setViewLogin(true);
     setViewSignup(false);
     setViewPostList(false);
     setViewPostDetail(false);
+    setViewPostForm(false);
   };
 
   const navToSignup = () => {
@@ -48,6 +51,7 @@ function App() {
     setViewSignup(true);
     setViewPostList(false);
     setViewPostDetail(false);
+    setViewPostForm(false);
   };
 
   const navToPostList = () => {
@@ -55,6 +59,7 @@ function App() {
     setViewSignup(false);
     setViewPostList(true);
     setViewPostDetail(false);
+    setViewPostForm(false);
   };
 
   const navToPostDetail = () => {
@@ -62,6 +67,14 @@ function App() {
     setViewSignup(false);
     setViewPostList(false);
     setViewPostDetail(true);
+    setViewPostForm(false);
+  };
+  const navToPostForm = () => {
+    setViewLogin(false);
+    setViewSignup(false);
+    setViewPostList(false);
+    setViewPostDetail(false);
+    setViewPostForm(true);
   };
 
   const logOut = () => {
@@ -131,7 +144,7 @@ function App() {
           navToPostList={navToPostList}
         />
       )} */}
-      {viewSignup && (
+      {/* {viewSignup && (
         <SignupScreen
           username={username}
           email={email}
@@ -143,12 +156,13 @@ function App() {
           handleConfirmPassword={handleConfirmPassword}
           navToLogin={navToLogin}
         />
-      )}
+      )} */}
       {viewPostList && (
         <PostListScreen
           // currentPost={currentPost}
           setCurrentPost={setCurrentPost}
           navToPostDetail={navToPostDetail}
+          navToPostForm={navToPostForm}
         />
       )}
       {viewPostDetail && (
@@ -158,6 +172,7 @@ function App() {
           navToPostDetail={navToPostDetail}
         />
       )}
+      {viewPostForm && <PostFormScreen navToPostList={navToPostList} />}
     </>
   );
 }
