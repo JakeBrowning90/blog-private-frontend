@@ -74,6 +74,23 @@ function PostFormScreen({ currentPost, navToPostList }) {
     }
   }
 
+  async function deletePost(postID) {
+    const response = await fetch(apiurl + "posts/" + postID, {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+    });
+    const deleteResponse = await response.json();
+    if (deleteResponse.status == 403) {
+      console.log("Delete action forbidden");
+    } else {
+      navToPostList();
+    }
+  }
+
   return (
     <div className="screenPostForm page">
       <form
@@ -125,7 +142,11 @@ function PostFormScreen({ currentPost, navToPostList }) {
         <button>Save changes</button>
       </form>
 
-      <button>Delete post</button>
+      {currentPost ? (
+        <button onClick={() => deletePost(currentPost._id)}>Delete post</button>
+      ) : (
+        <button onClick={navToPostList}>Cancel new post</button>
+      )}
     </div>
   );
 }
