@@ -112,11 +112,8 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
               <p>{comment.user.username}</p>
               <p>{new Date(comment.timestamp).toUTCString()}</p>
               <p>{comment.body}</p>
-              {currentUser && localStorage.getItem("id") == comment.user.id && (
-                <button onClick={() => deleteComment(comment._id)}>
-                  Delete
-                </button>
-              )}
+
+              <button onClick={() => deleteComment(comment._id)}>Delete</button>
             </li>
           );
         })}
