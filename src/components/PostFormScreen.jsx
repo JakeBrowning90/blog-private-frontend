@@ -97,7 +97,7 @@ function PostFormScreen({ currentPost, navToPostList }) {
         className="postForm"
         onSubmit={currentPost ? updatePost : submitPost}
       >
-        <label htmlFor="">
+        <label htmlFor="title">
           Title:
           <input
             name="title"
@@ -107,7 +107,7 @@ function PostFormScreen({ currentPost, navToPostList }) {
             onChange={handleTitle}
           />
         </label>
-        <label htmlFor="">
+        <label htmlFor="subtitle">
           Subtitle:
           <input
             name="subtitle"
@@ -118,7 +118,7 @@ function PostFormScreen({ currentPost, navToPostList }) {
           />
         </label>
 
-        <label htmlFor="">
+        <label htmlFor="body">
           Body:
           <textarea
             name="body"
@@ -129,7 +129,7 @@ function PostFormScreen({ currentPost, navToPostList }) {
           />
         </label>
 
-        <label htmlFor="">
+        <label htmlFor="published">
           Publish:
           <input
             name="published"

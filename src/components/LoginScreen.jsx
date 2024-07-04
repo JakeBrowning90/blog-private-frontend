@@ -47,7 +47,7 @@ function LoginScreen({
       Log In
       {invalidLogin && <p>Incorrect email / password. Please try again.</p>}
       <form className="userForm" onSubmit={submitLogin}>
-        <label htmlFor="">
+        <label htmlFor="email">
           Email:
           <input
             name="email"
@@ -57,7 +57,7 @@ function LoginScreen({
             onChange={handleEmail}
           />
         </label>
-        <label htmlFor="">
+        <label htmlFor="password">
           Password:
           <input
             name="password"

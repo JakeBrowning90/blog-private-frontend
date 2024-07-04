@@ -84,10 +84,11 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
 
       {currentUser ? (
         <form onSubmit={submitComment}>
-          <label htmlFor="">
+          <label htmlFor="commentBody">
             Comment:
             <textarea
               name="commentBody"
+              id="commentBody"
               type="text"
               minLength="1"
               maxLength="500"
