@@ -71,6 +71,8 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
       .catch((error) => setError(error));
   }, []);
 
+  const markup = { __html: currentPost.body };
+
   return (
     <div className="screenPostDetail page">
       <h2>{currentPost.title} </h2>
@@ -78,7 +80,7 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
       <p>By {currentPost.user.full_name}</p>
       <p>Originally written: {new Date(currentPost.createdAt).toUTCString()}</p>
       <p>Last updated: {new Date(currentPost.updatedAt).toUTCString()}</p>
-      <p>{currentPost.body}</p>
+      <div dangerouslySetInnerHTML={markup}/>
 
       <p>Discussion:</p>
 
