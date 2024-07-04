@@ -172,7 +172,12 @@ function App() {
           navToPostDetail={navToPostDetail}
         />
       )}
-      {viewPostForm && <PostFormScreen navToPostList={navToPostList} />}
+      {viewPostForm && (
+        <PostFormScreen
+          currentPost={currentPost}
+          navToPostList={navToPostList}
+        />
+      )}
     </>
   );
 }

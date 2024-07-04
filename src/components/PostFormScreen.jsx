@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { apiurl } from "../apiSource";
 
-function PostFormScreen({ navToPostList }) {
+function PostFormScreen({ currentPost, navToPostList }) {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [body, setBody] = useState("");
@@ -56,7 +56,7 @@ function PostFormScreen({ navToPostList }) {
             name="title"
             type="text"
             id="title"
-            value={title}
+            value={currentPost ? currentPost.title : title}
             onChange={handleTitle}
           />
         </label>
@@ -66,7 +66,7 @@ function PostFormScreen({ navToPostList }) {
             name="subtitle"
             type="text"
             id="subtitle"
-            value={subtitle}
+            value={currentPost ? currentPost.subtitle : subtitle}
             onChange={handleSubtitle}
           />
         </label>
@@ -77,7 +77,7 @@ function PostFormScreen({ navToPostList }) {
             name="body"
             type="text"
             id="body"
-            value={body}
+            value={currentPost ? currentPost.body: body}
             onChange={handleBody}
           />
         </label>

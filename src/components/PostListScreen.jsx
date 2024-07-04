@@ -7,9 +7,14 @@ function PostListScreen({ setCurrentPost, navToPostDetail, navToPostForm }) {
   const [loading, setLoading] = useState(true);
   // const [currentPost, setCurrentPost] = useState("");
 
-  const loadPostDetail = (post) => {
+  const loadPostDetail = post => {
     setCurrentPost(post);
     navToPostDetail();
+  };
+
+  const loadPostForm = (post) => {
+    setCurrentPost(post);
+    navToPostForm();
   };
 
   useEffect(() => {
@@ -36,7 +41,7 @@ function PostListScreen({ setCurrentPost, navToPostDetail, navToPostForm }) {
   return (
     <div className="screenPostList page">
       Post List
-      <button onClick={navToPostForm}>Write New Post</button>
+      <button onClick={() => loadPostForm()}>Write New Post</button>
       {postList.length == 0 ? (
         <p>There are no published posts.</p>
       ) : (
@@ -53,7 +58,7 @@ function PostListScreen({ setCurrentPost, navToPostDetail, navToPostForm }) {
                 </p>
                 <p>Last updated: {new Date(post.updatedAt).toUTCString()}</p>
                 {post.is_published ? <p>Published</p> : <p>Unpublished</p>}
-                <button>Manage post</button>
+                <button onClick={() => loadPostForm(post)}>Manage post</button>
               </li>
             );
           })}
