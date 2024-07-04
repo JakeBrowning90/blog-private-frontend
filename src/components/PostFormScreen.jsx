@@ -3,7 +3,9 @@ import { apiurl } from "../apiSource";
 
 function PostFormScreen({ currentPost, navToPostList }) {
   const [title, setTitle] = useState(currentPost ? currentPost.title : "");
-  const [subtitle, setSubtitle] = useState(currentPost ? currentPost.subtitle : "");
+  const [subtitle, setSubtitle] = useState(
+    currentPost ? currentPost.subtitle : ""
+  );
   const [body, setBody] = useState(currentPost ? currentPost.body : "");
   const [published, setPublished] = useState(false);
   const [postErrors, setPostErrors] = useState([]);
@@ -20,6 +22,31 @@ function PostFormScreen({ currentPost, navToPostList }) {
 
   function handlePublished(e) {
     setPublished(!published);
+  }
+
+  async function updatePost(e) {
+    e.preventDefault();
+    const response = await fetch(apiurl + "posts/" + currentPost.id, {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        title: title,
+        subtitle: subtitle,
+        body: body,
+        user: localStorage.getItem("id"),
+        is_published: published,
+      }),
+    });
+    const postResponse = await response.json();
+    if (Array.isArray(postResponse)) {
+      setPostErrors(postResponse);
+    } else {
+      navToPostList();
+    }
   }
 
   async function submitPost(e) {
@@ -49,7 +76,10 @@ function PostFormScreen({ currentPost, navToPostList }) {
 
   return (
     <div className="screenPostForm page">
-      <form className="postForm" onSubmit={submitPost}>
+      <form
+        className="postForm"
+        onSubmit={currentPost ? updatePost : submitPost}
+      >
         <label htmlFor="">
           Title:
           <input
