@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { apiurl } from "../apiSource";
 
 function PostFormScreen({ currentPost, navToPostList }) {
-  const [title, setTitle] = useState("");
-  const [subtitle, setSubtitle] = useState("");
-  const [body, setBody] = useState("");
+  const [title, setTitle] = useState(currentPost ? currentPost.title : "");
+  const [subtitle, setSubtitle] = useState(currentPost ? currentPost.subtitle : "");
+  const [body, setBody] = useState(currentPost ? currentPost.body : "");
   const [published, setPublished] = useState(false);
   const [postErrors, setPostErrors] = useState([]);
 
@@ -56,7 +56,7 @@ function PostFormScreen({ currentPost, navToPostList }) {
             name="title"
             type="text"
             id="title"
-            value={currentPost ? currentPost.title : title}
+            value={title}
             onChange={handleTitle}
           />
         </label>
@@ -66,7 +66,7 @@ function PostFormScreen({ currentPost, navToPostList }) {
             name="subtitle"
             type="text"
             id="subtitle"
-            value={currentPost ? currentPost.subtitle : subtitle}
+            value={subtitle}
             onChange={handleSubtitle}
           />
         </label>
@@ -77,7 +77,7 @@ function PostFormScreen({ currentPost, navToPostList }) {
             name="body"
             type="text"
             id="body"
-            value={currentPost ? currentPost.body: body}
+            value={body}
             onChange={handleBody}
           />
         </label>
