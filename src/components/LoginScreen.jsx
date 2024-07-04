@@ -11,7 +11,6 @@ function LoginScreen({
   setLoggedIn,
 }) {
   const [invalidLogin, setInvalidLogin] = useState(false);
-  // TODO - Add fetch for login
   async function submitLogin(e) {
     e.preventDefault();
     const response = await fetch(apiurl + "users/login", {

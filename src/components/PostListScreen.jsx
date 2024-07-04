@@ -5,9 +5,8 @@ function PostListScreen({ setCurrentPost, navToPostDetail, navToPostForm }) {
   const [postList, setPostList] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  // const [currentPost, setCurrentPost] = useState("");
 
-  const loadPostDetail = post => {
+  const loadPostDetail = (post) => {
     setCurrentPost(post);
     navToPostDetail();
   };

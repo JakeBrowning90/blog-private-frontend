@@ -4,6 +4,7 @@ import SignupScreen from "./components/SignupScreen";
 import PostListScreen from "./components/PostListScreen";
 import PostDetailScreen from "./components/PostDetailScreen";
 import PostFormScreen from "./components/PostFormScreen";
+
 import "./App.css";
 
 function App() {
@@ -15,16 +16,9 @@ function App() {
   const [viewPostForm, setViewPostForm] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [currentPost, setCurrentPost] = useState("");
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
   const [loggedIn, setLoggedIn] = useState(false);
-
-  // function handleUsername(e) {
-  //   setUsername(e.target.value);
-  // }
 
   function handleEmail(e) {
     setEmail(e.target.value);
@@ -33,10 +27,6 @@ function App() {
   function handlePassword(e) {
     setPassword(e.target.value);
   }
-
-  // function handleConfirmPassword(e) {
-  //   setConfirmPassword(e.target.value);
-  // }
 
   const navToLogin = () => {
     setViewLogin(true);
@@ -97,9 +87,6 @@ function App() {
             </nav>
           ) : (
             <nav>
-              {/* <div>Visitor</div>
-              <div onClick={navToLogin}>Log in</div>
-              <div onClick={navToSignup}>Sign up</div> */}
               Writer Access
             </nav>
           )}
@@ -134,32 +121,8 @@ function App() {
           </nav>
         )}
       </header>
-      {/* {viewLogin && (
-        <LoginScreen
-          email={email}
-          password={password}
-          handleEmail={handleEmail}
-          handlePassword={handlePassword}
-          setCurrentUser={setCurrentUser}
-          navToPostList={navToPostList}
-        />
-      )} */}
-      {/* {viewSignup && (
-        <SignupScreen
-          username={username}
-          email={email}
-          password={password}
-          confirmPassword={confirmPassword}
-          handleUsername={handleUsername}
-          handleEmail={handleEmail}
-          handlePassword={handlePassword}
-          handleConfirmPassword={handleConfirmPassword}
-          navToLogin={navToLogin}
-        />
-      )} */}
       {viewPostList && (
         <PostListScreen
-          // currentPost={currentPost}
           setCurrentPost={setCurrentPost}
           navToPostDetail={navToPostDetail}
           navToPostForm={navToPostForm}

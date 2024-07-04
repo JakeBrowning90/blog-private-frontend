@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+// import TinyMCE from "./TinyMCE";
 import { apiurl } from "../apiSource";
+import { Editor } from "@tinymce/tinymce-react";
 
 function PostFormScreen({ currentPost, navToPostList }) {
   const [title, setTitle] = useState(currentPost ? currentPost.title : "");
@@ -91,8 +93,16 @@ function PostFormScreen({ currentPost, navToPostList }) {
     }
   }
 
+  // useEffect(() => setBody(currentPost.body ?? ""), [currentPost.body]);
+
   return (
     <div className="screenPostForm page">
+      <ul className="errorList">
+        {postErrors.map((err) => {
+          return <li key={postErrors.indexOf(err)}>{err.msg}</li>;
+        })}
+      </ul>
+
       <form
         className="postForm"
         onSubmit={currentPost ? updatePost : submitPost}
@@ -103,6 +113,8 @@ function PostFormScreen({ currentPost, navToPostList }) {
             name="title"
             type="text"
             id="title"
+            minLength="1"
+            maxLength="100"
             value={title}
             onChange={handleTitle}
           />
@@ -113,6 +125,8 @@ function PostFormScreen({ currentPost, navToPostList }) {
             name="subtitle"
             type="text"
             id="subtitle"
+            minLength="1"
+            maxLength="100"
             value={subtitle}
             onChange={handleSubtitle}
           />
@@ -120,15 +134,32 @@ function PostFormScreen({ currentPost, navToPostList }) {
 
         <label htmlFor="body">
           Body:
-          <textarea
+          {/* <textarea
             name="body"
             type="text"
-            id="body"
+            id="postbody"
+            minLength="1"
+            maxLength="12000"
             value={body}
             onChange={handleBody}
+          /> */}
+          <Editor
+            apiKey="xs92b2ibjkmggdla0j0fg6yoo308ij3et87tj8yzzds7b7ch"
+            init={{
+              plugins:
+                "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker",
+              toolbar:
+                "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
+            }}
+            name="body"
+            type="textarea"
+            id="body"
+            minLength="1"
+            maxLength="12000"
+            value={body}
+            onEditorChange={(newValue, editor) => setBody(newValue)}
           />
         </label>
-
         <label htmlFor="published">
           Publish:
           <input
