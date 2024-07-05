@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-// import TinyMCE from "./TinyMCE";
+import React, { useState } from "react";
 import { apiurl } from "../apiSource";
 import { Editor } from "@tinymce/tinymce-react";
 
@@ -18,9 +17,9 @@ function PostFormScreen({ currentPost, navToPostList }) {
   function handleSubtitle(e) {
     setSubtitle(e.target.value);
   }
-  function handleBody(e) {
-    setBody(e.target.value);
-  }
+  // function handleBody(e) {
+  //   setBody(e.target.value);
+  // }
 
   function handlePublished(e) {
     setPublished(!published);
@@ -93,8 +92,6 @@ function PostFormScreen({ currentPost, navToPostList }) {
     }
   }
 
-  // useEffect(() => setBody(currentPost.body ?? ""), [currentPost.body]);
-
   return (
     <div className="screenPostForm page">
       <ul className="errorList">
@@ -134,15 +131,6 @@ function PostFormScreen({ currentPost, navToPostList }) {
 
         <label htmlFor="body">
           Body:
-          {/* <textarea
-            name="body"
-            type="text"
-            id="postbody"
-            minLength="1"
-            maxLength="12000"
-            value={body}
-            onChange={handleBody}
-          /> */}
           <Editor
             apiKey="xs92b2ibjkmggdla0j0fg6yoo308ij3et87tj8yzzds7b7ch"
             init={{

@@ -8,7 +8,6 @@ import PostFormScreen from "./components/PostFormScreen";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [viewLogin, setViewLogin] = useState(true);
   const [viewSignup, setViewSignup] = useState(false);
   const [viewPostList, setViewPostList] = useState(false);
