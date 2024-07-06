@@ -39,7 +39,6 @@ function PostListScreen({ setCurrentPost, navToPostDetail, navToPostForm }) {
 
   return (
     <div className="screenPostList page">
-      Post List
       <button onClick={() => loadPostForm()}>Write New Post</button>
       {postList.length == 0 ? (
         <p>There are no published posts.</p>
@@ -51,12 +50,16 @@ function PostListScreen({ setCurrentPost, navToPostDetail, navToPostForm }) {
                 <h2 onClick={() => loadPostDetail(post)}>{post.title} </h2>
 
                 <h3>{post.subtitle}</h3>
-                <p>By {post.user.full_name}</p>
+                <p>By {post.user.username}</p>
                 <p>
                   Originally written: {new Date(post.createdAt).toUTCString()}
                 </p>
                 <p>Last updated: {new Date(post.updatedAt).toUTCString()}</p>
-                {post.is_published ? <p>Published</p> : <p>Unpublished</p>}
+                {post.is_published ? (
+                  <p className="status published">Published</p>
+                ) : (
+                  <p className="status unpublished">Unpublished</p>
+                )}
                 <button onClick={() => loadPostForm(post)}>Manage post</button>
               </li>
             );

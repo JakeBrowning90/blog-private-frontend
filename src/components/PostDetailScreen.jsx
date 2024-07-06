@@ -75,12 +75,16 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
 
   return (
     <div className="screenPostDetail page">
-      <h2>{currentPost.title} </h2>
-      <h3>{currentPost.subtitle}</h3>
-      <p>By {currentPost.user.full_name}</p>
-      <p>Originally written: {new Date(currentPost.createdAt).toUTCString()}</p>
-      <p>Last updated: {new Date(currentPost.updatedAt).toUTCString()}</p>
-      <div dangerouslySetInnerHTML={markup}/>
+      <div className="postPreview">
+        <h2>{currentPost.title} </h2>
+        <h3>{currentPost.subtitle}</h3>
+        <p>By {currentPost.user.full_name}</p>
+        <p>
+          Originally written: {new Date(currentPost.createdAt).toUTCString()}
+        </p>
+        <p>Last updated: {new Date(currentPost.updatedAt).toUTCString()}</p>
+        <div dangerouslySetInnerHTML={markup} />
+      </div>
 
       <p>Discussion:</p>
 
@@ -107,7 +111,7 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
         <div>Sign in to post a comment.</div>
       )}
 
-      <ul>
+      <ul className="commentList">
         {commentsList.map((comment) => {
           return (
             <li key={comment._id} className="commentLI">
