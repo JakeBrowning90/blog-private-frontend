@@ -78,11 +78,11 @@ function App() {
     return (
       <>
         <header>
-          <div onClick={navToPostList}>Home</div>
+          <div className="navWord" onClick={navToPostList}>Home</div>
           {currentUser ? (
             <nav>
               <div>{currentUser}</div>
-              <div onClick={logOut}>Logout</div>
+              <div className="navWord" onClick={logOut}>Logout</div>
             </nav>
           ) : (
             <nav>
@@ -99,6 +99,10 @@ function App() {
           navToPostList={navToPostList}
           setLoggedIn={setLoggedIn}
         />
+        <footer>
+        <p>App by Jake Browning, 2024.</p>
+        <a className="navWord" href="http://jake-browning.com/" target="_blank">Portfolio</a>
+      </footer>
       </>
     );
   }
@@ -106,11 +110,11 @@ function App() {
   return (
     <>
       <header>
-        <div onClick={navToPostList}>Home</div>
+        <div className="navWord" onClick={navToPostList}>Home</div>
         {currentUser ? (
           <nav>
             <div>{currentUser}</div>
-            <div onClick={logOut}>Logout</div>
+            <div className="navWord" onClick={logOut}>Logout</div>
           </nav>
         ) : (
           <nav>
@@ -140,6 +144,10 @@ function App() {
           navToPostList={navToPostList}
         />
       )}
+      <footer>
+        <p>App by Jake Browning, 2024.</p>
+        <a className="navWord" href="http://jake-browning.com/" target="_blank">Portfolio</a>
+      </footer>
     </>
   );
 }

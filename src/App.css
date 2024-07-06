@@ -6,7 +6,7 @@
   padding: 0.33rem;
   text-align: center;
   display: grid;
-  grid-template-rows: 30px 1fr;
+  grid-template-rows: 30px 1fr 30px;
   gap: 0.33rem;
   box-sizing: border-box;
 }
@@ -48,6 +48,10 @@
 }
 
 /* My styles */
+a, .navWord {
+ text-decoration: underline;
+}
+
 button {
   margin: 0 auto;
   max-width: 50%;
@@ -58,12 +62,14 @@ body {
 }
 
 header,
+footer,
 nav {
   display: flex;
   gap: 10px;
 }
 
-header {
+header,
+footer {
   background-color: rgba(11, 0, 166, 0.905);
   color: white;
   justify-content: space-between;
@@ -106,7 +112,8 @@ header {
   background-color: rgba(218, 238, 255, 0.744);
 } */
 
-.postList, .commentList {
+.postList,
+.commentList {
   list-style: none;
   padding: 0;
   display: flex;
@@ -114,7 +121,8 @@ header {
   gap: 0.33rem;
 }
 
-.postPreview, .commentLI {
+.postPreview,
+.commentLI {
   background-color: rgba(218, 238, 255, 0.744);
   padding: 0.33rem;
   display: flex;
