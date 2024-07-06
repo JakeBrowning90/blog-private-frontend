@@ -90,28 +90,6 @@ footer {
   gap: 0.33rem;
 }
 
-/* .screenLogin {
-  background-color: rgba(255, 106, 106, 0.522);
-}
-
-.screenSignup {
-  background-color: rgba(255, 194, 61, 0.522);
-}
-
-.screenPostList {
-  background-color: rgba(255, 243, 106, 0.522);
-}
-
-
-
-.screenPostForm {
-  background-color: rgba(106, 255, 245, 0.522);
-} */
-
-/* .screenPostDetail {
-  background-color: rgba(218, 238, 255, 0.744);
-} */
-
 .postList,
 .commentList {
   list-style: none;
