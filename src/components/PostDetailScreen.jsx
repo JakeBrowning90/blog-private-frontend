@@ -78,10 +78,10 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
       <div className="postPreview">
         <h2>{currentPost.title} </h2>
         <h3>{currentPost.subtitle}</h3>
-        <p>By {currentPost.user.full_name}</p>
+        <p>By {currentPost.user.username}</p>
         <p>First posted: {new Date(currentPost.createdAt).toUTCString()}</p>
         <p>Last update: {new Date(currentPost.updatedAt).toUTCString()}</p>
-        <div dangerouslySetInnerHTML={markup} />
+        <div className="textBody" dangerouslySetInnerHTML={markup} />
       </div>
 
       <p>Discussion:</p>
@@ -115,7 +115,7 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
             <li key={comment._id} className="commentLI">
               <p>{comment.user.username}</p>
               <p>{new Date(comment.timestamp).toUTCString()}</p>
-              <p>{comment.body}</p>
+              <p className="textBody">{comment.body}</p>
 
               <button onClick={() => deleteComment(comment._id)}>Delete</button>
             </li>
