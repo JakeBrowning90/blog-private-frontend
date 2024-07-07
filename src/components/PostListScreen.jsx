@@ -51,10 +51,8 @@ function PostListScreen({ setCurrentPost, navToPostDetail, navToPostForm }) {
 
                 <h3>{post.subtitle}</h3>
                 <p>By {post.user.username}</p>
-                <p>
-                  Originally written: {new Date(post.createdAt).toUTCString()}
-                </p>
-                <p>Last updated: {new Date(post.updatedAt).toUTCString()}</p>
+                <p>First posted: {new Date(post.createdAt).toUTCString()}</p>
+                <p>Last update: {new Date(post.updatedAt).toUTCString()}</p>
                 {post.is_published ? (
                   <p className="status published">Published</p>
                 ) : (

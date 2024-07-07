@@ -79,10 +79,8 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
         <h2>{currentPost.title} </h2>
         <h3>{currentPost.subtitle}</h3>
         <p>By {currentPost.user.full_name}</p>
-        <p>
-          Originally written: {new Date(currentPost.createdAt).toUTCString()}
-        </p>
-        <p>Last updated: {new Date(currentPost.updatedAt).toUTCString()}</p>
+        <p>First posted: {new Date(currentPost.createdAt).toUTCString()}</p>
+        <p>Last update: {new Date(currentPost.updatedAt).toUTCString()}</p>
         <div dangerouslySetInnerHTML={markup} />
       </div>
 
