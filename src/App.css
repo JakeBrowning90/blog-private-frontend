@@ -48,8 +48,13 @@
 }
 
 /* My styles */
-a, .navWord {
- text-decoration: underline;
+a,
+.navWord {
+  text-decoration: underline;
+}
+
+.bodyLink {
+  color: black;
 }
 
 button {
@@ -70,7 +75,9 @@ nav {
 
 header,
 footer {
-  background-color: rgba(11, 0, 166, 0.905);
+  /* background-color: rgba(11, 0, 166, 0.905); */
+  background-color: rgba(166, 0, 0, 0.905);
+
   color: white;
   justify-content: space-between;
   align-items: center;

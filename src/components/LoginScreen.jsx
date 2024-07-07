@@ -68,6 +68,13 @@ function LoginScreen({
         </label>
         <button>Submit</button>
       </form>
+      <a
+        className="navWord bodyLink"
+        href="https://blog-public-frontend.fly.dev/"
+        target="_blank"
+      >
+        Go to public site
+      </a>
     </div>
   );
 }
