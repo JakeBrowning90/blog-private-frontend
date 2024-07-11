@@ -69,7 +69,7 @@ function LoginScreen({
         </label>
         <button>Submit</button>
       </form>
-      <div>Want to see the back end? Log in as guest:
+      <div>Want to preview this site? Log in as a guest:
         <p>Email: <b>demoguest@zmail.com</b></p>
         <p>Password: <b>demouser1</b></p>
       </div>
