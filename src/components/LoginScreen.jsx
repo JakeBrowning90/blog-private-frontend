@@ -69,6 +69,10 @@ function LoginScreen({
         </label>
         <button>Submit</button>
       </form>
+      <div>Want to see the back end? Log in as guest:
+        <p>Email: <b>demoguest@zmail.com</b></p>
+        <p>Password: <b>demouser1</b></p>
+      </div>
       <a
         className="navWord bodyLink"
         href="https://blog-public-frontend.fly.dev/"
