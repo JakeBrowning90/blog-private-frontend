@@ -27,68 +27,80 @@ function PostFormScreen({ currentPost, navToPostList }) {
 
   async function updatePost(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "posts/" + currentPost.id, {
-      method: "PUT",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        title: title,
-        subtitle: subtitle,
-        body: body,
-        user: localStorage.getItem("id"),
-        is_published: published,
-      }),
-    });
-    const postResponse = await response.json();
-    if (Array.isArray(postResponse)) {
-      setPostErrors(postResponse);
+    if (localStorage.getItem("isDemoGuest") == "true") {
+      alert("This action is unavailable to guests.");
     } else {
-      navToPostList();
+      const response = await fetch(apiurl + "posts/" + currentPost.id, {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          title: title,
+          subtitle: subtitle,
+          body: body,
+          user: localStorage.getItem("id"),
+          is_published: published,
+        }),
+      });
+      const postResponse = await response.json();
+      if (Array.isArray(postResponse)) {
+        setPostErrors(postResponse);
+      } else {
+        navToPostList();
+      }
     }
   }
 
   async function submitPost(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "posts/", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        title: title,
-        subtitle: subtitle,
-        body: body,
-        user: localStorage.getItem("id"),
-        is_published: published,
-      }),
-    });
-    const postResponse = await response.json();
-    if (Array.isArray(postResponse)) {
-      setPostErrors(postResponse);
+    if (localStorage.getItem("isDemoGuest") == "true") {
+      alert("This action is unavailable to guests.");
     } else {
-      navToPostList();
+      const response = await fetch(apiurl + "posts/", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          title: title,
+          subtitle: subtitle,
+          body: body,
+          user: localStorage.getItem("id"),
+          is_published: published,
+        }),
+      });
+      const postResponse = await response.json();
+      if (Array.isArray(postResponse)) {
+        setPostErrors(postResponse);
+      } else {
+        navToPostList();
+      }
     }
   }
 
   async function deletePost(postID) {
-    const response = await fetch(apiurl + "posts/" + postID, {
-      method: "DELETE",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: localStorage.getItem("token"),
-      },
-    });
-    const deleteResponse = await response.json();
-    if (deleteResponse.status == 403) {
-      console.log("Delete action forbidden");
+    if (localStorage.getItem("isDemoGuest") == "true") {
+      alert("This action is unavailable to guests.");
     } else {
-      navToPostList();
+      const response = await fetch(apiurl + "posts/" + postID, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token"),
+        },
+      });
+      const deleteResponse = await response.json();
+      if (deleteResponse.status == 403) {
+        console.log("Delete action forbidden");
+      } else {
+        navToPostList();
+      }
     }
   }
 
@@ -150,7 +162,7 @@ function PostFormScreen({ currentPost, navToPostList }) {
           />
         </label>
         <div className="listToolbar">
-          <label className='publishLabel' htmlFor="published">
+          <label className="publishLabel" htmlFor="published">
             Publish:
             <input
               name="published"

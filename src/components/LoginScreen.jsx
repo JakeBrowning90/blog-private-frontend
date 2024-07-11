@@ -33,7 +33,8 @@ function LoginScreen({
       } else {
         localStorage.setItem("username", loginResponse.username);
         localStorage.setItem("id", loginResponse.id);
-        localStorage.setItem("token", `Bearer ${loginResponse.token}`);
+        localStorage.setItem("isDemoGuest", loginResponse.isDemoGuest);
+        localStorage.setItem("token", `Bearer ${loginResponse.token}`);   
         setCurrentUser(loginResponse.username);
         setInvalidLogin(false);
         setLoggedIn(true);

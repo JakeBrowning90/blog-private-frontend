@@ -12,45 +12,53 @@ function PostDetailScreen({ currentPost, currentUser, navToPostDetail }) {
 
   async function submitComment(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "comments/", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        body: commentBody,
-        user: localStorage.getItem("id"),
-        post: currentPost.id,
-      }),
-    });
-    const commentResponse = await response.json();
-    if (Array.isArray(commentResponse)) {
-      setCommentErrors(commentResponse);
+    if (localStorage.getItem("isDemoGuest") == "true") {
+      alert("This action is unavailable to guests.");
     } else {
-      commentResponse.user.username = currentUser;
-      setCommentsList([...commentsList, commentResponse]);
-      setCommentBody("");
+      const response = await fetch(apiurl + "comments/", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          body: commentBody,
+          user: localStorage.getItem("id"),
+          post: currentPost.id,
+        }),
+      });
+      const commentResponse = await response.json();
+      if (Array.isArray(commentResponse)) {
+        setCommentErrors(commentResponse);
+      } else {
+        commentResponse.user.username = currentUser;
+        setCommentsList([...commentsList, commentResponse]);
+        setCommentBody("");
+      }
     }
   }
 
   async function deleteComment(commentID) {
-    const response = await fetch(apiurl + "comments/" + commentID, {
-      method: "DELETE",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: localStorage.getItem("token"),
-      },
-    });
-    const deleteResponse = await response.json();
-    if (deleteResponse.status == 403) {
-      console.log("Delete action forbidden");
+    if (localStorage.getItem("isDemoGuest") == "true") {
+      alert("This action is unavailable to guests.");
     } else {
-      setCommentsList(
-        commentsList.filter((comment) => comment._id !== commentID)
-      );
+      const response = await fetch(apiurl + "comments/" + commentID, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token"),
+        },
+      });
+      const deleteResponse = await response.json();
+      if (deleteResponse.status == 403) {
+        console.log("Delete action forbidden");
+      } else {
+        setCommentsList(
+          commentsList.filter((comment) => comment._id !== commentID)
+        );
+      }
     }
   }
 
