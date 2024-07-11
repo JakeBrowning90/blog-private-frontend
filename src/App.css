@@ -62,6 +62,10 @@ button {
   max-width: 50%;
 }
 
+.manageButton {
+  margin: 0 ;
+}
+
 body {
   height: 100vh;
 }
@@ -115,13 +119,20 @@ footer {
   gap: 0.33rem;
 }
 
+.listToolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
 .status {
   font-weight: bold;
   color: white;
   width: min-content;
-  margin: 0 auto;
+  margin: 0;
   padding: 2px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .published {
@@ -146,6 +157,11 @@ label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.publishLabel {
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: auto;
 }
 
 .userForm,

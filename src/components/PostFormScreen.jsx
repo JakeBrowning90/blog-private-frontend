@@ -149,17 +149,19 @@ function PostFormScreen({ currentPost, navToPostList }) {
             onEditorChange={(newValue, editor) => setBody(newValue)}
           />
         </label>
-        <label htmlFor="published">
-          Publish:
-          <input
-            name="published"
-            type="checkbox"
-            id="published"
-            value={published}
-            onChange={handlePublished}
-          />
-        </label>
-        <button>Save changes</button>
+        <div className="listToolbar">
+          <label className='publishLabel' htmlFor="published">
+            Publish:
+            <input
+              name="published"
+              type="checkbox"
+              id="published"
+              value={published}
+              onChange={handlePublished}
+            />
+          </label>
+          <button>Save changes</button>
+        </div>
       </form>
 
       {currentPost ? (

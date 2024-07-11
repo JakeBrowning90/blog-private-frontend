@@ -53,12 +53,16 @@ function PostListScreen({ setCurrentPost, navToPostDetail, navToPostForm }) {
                 <p>By {post.user.username}</p>
                 <p>First posted: {new Date(post.createdAt).toUTCString()}</p>
                 <p>Last update: {new Date(post.updatedAt).toUTCString()}</p>
-                {post.is_published ? (
-                  <p className="status published">Published</p>
-                ) : (
-                  <p className="status unpublished">Unpublished</p>
-                )}
-                <button onClick={() => loadPostForm(post)}>Manage post</button>
+                <div className="listToolbar">
+                  {post.is_published ? (
+                    <p className="status published">Published</p>
+                  ) : (
+                    <p className="status unpublished">Unpublished</p>
+                  )}
+                  <button className='manageButton' onClick={() => loadPostForm(post)}>
+                    Manage post
+                  </button>
+                </div>
               </li>
             );
           })}
